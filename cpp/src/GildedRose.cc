@@ -61,6 +61,18 @@ void updateBackstageItem(Item &item)
     item.sellIn--;
 }
 
+void updateConjuredItem(Item &item)
+{
+    if (item.sellIn > 0)
+        item.quality -= 2;
+    else
+        item.quality -= 4;
+
+    item.quality = std::max(item.quality, 0);
+
+    item.sellIn--;
+}
+
 bool isAgedBrie(const Item &item)
 {
     return item.name == "Aged Brie";
@@ -76,6 +88,11 @@ bool isBackstage(const Item &item)
     return item.name == "Backstage passes to a TAFKAL80ETC concert";
 }
 
+bool isConjured(const Item &item)
+{
+    return item.name == "Conjured Mana Cake";
+}
+
 void updateItem(Item &item)
 {
     if (isAgedBrie(item))
@@ -84,6 +101,8 @@ void updateItem(Item &item)
         updatSulfurasItem(item);
     else if (isBackstage(item))
         updateBackstageItem(item);
+    else if (isConjured(item))
+        updateConjuredItem(item);
     else
         updateNormalItem(item);
 }
