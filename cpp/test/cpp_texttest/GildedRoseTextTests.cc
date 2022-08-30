@@ -1,9 +1,11 @@
 #include <iostream>
 #include "GildedRose.h"
 
-void print_item(Item& item)
+using namespace std;
+
+void print_item(Item &item)
 {
-    std::cout << item.name << ", " <<  item.sellIn << ", " << item.quality << std::endl;
+    std::cout << item.name << ", " << item.sellIn << ", " << item.quality << std::endl;
 }
 
 int main()
@@ -22,22 +24,20 @@ int main()
     // this Conjured item doesn't yet work properly
     items.push_back({"Conjured Mana Cake", 3, 6});
 
-	std::cout << "OMGHAI!" << std::endl;
+    std::cout << "OMGHAI!" << std::endl;
 
     GildedRose app(items);
 
     for (int day = 0; day <= 30; day++)
     {
-		std::cout << "-------- day " << day << " --------" << std::endl;
-		std::cout << "name, sellIn, quality" << std::endl;
-        for (auto& item : items)
+        std::cout << "-------- day " << day << " --------" << std::endl;
+        std::cout << "name, sellIn, quality" << std::endl;
+        for (auto &item : items)
         {
             print_item(item);
         }
-		std::cout << std::endl;
+        std::cout << std::endl;
         app.updateQuality();
     }
     return 0;
 }
-
-
