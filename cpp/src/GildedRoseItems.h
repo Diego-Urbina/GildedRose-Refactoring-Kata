@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <string>
 #include "Item.h"
 
@@ -57,5 +58,5 @@ public:
 class FactoryItem
 {
 public:
-    NormalItem *createItem(Item &item);
+    static std::unique_ptr<NormalItem> createItem(Item &item);
 };

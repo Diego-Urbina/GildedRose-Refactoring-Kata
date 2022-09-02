@@ -41,19 +41,19 @@ void ConjuredItem::updateItem()
 #define BACKSTAGE "Backstage passes to a TAFKAL80ETC concert"
 #define CONJURED "Conjured Mana Cake"
 
-NormalItem *FactoryItem::createItem(Item &item)
+std::unique_ptr<NormalItem> FactoryItem::createItem(Item &item)
 {
     if (item.name == AGED_BRIE)
-        return new BrieItem(item);
+        return std::make_unique<BrieItem>(item);
 
     if (item.name == SULFURAS)
-        return new SulfurasItem(item);
+        return std::make_unique<SulfurasItem>(SulfurasItem(item));
 
     if (item.name == BACKSTAGE)
-        return new BackstageItem(item);
+        return std::make_unique<BackstageItem>(BackstageItem(item));
 
     if (item.name == CONJURED)
-        return new ConjuredItem(item);
+        return std::make_unique<ConjuredItem>(ConjuredItem(item));
 
-    return new NormalItem(item);
+    return std::make_unique<NormalItem>(NormalItem(item));
 }
