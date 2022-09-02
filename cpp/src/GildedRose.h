@@ -10,8 +10,8 @@ public:
 
     void updateQuality();
 
-    const std::unique_ptr<NormalItem> &getItem(int n) const;
+    const Item &getItem(int n) const;
 
 private:
-    std::vector<std::unique_ptr<NormalItem>> items;
+    std::vector<Item> &items;
 };
