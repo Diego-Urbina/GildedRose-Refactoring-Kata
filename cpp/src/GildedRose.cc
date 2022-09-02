@@ -1,4 +1,5 @@
 #include "GildedRose.h"
+#include <stdexcept>
 
 GildedRose::GildedRose(std::vector<Item> &items)
 {
@@ -14,4 +15,12 @@ void GildedRose::updateQuality()
     {
         item->updateItem();
     }
+}
+
+const std::unique_ptr<NormalItem> &GildedRose::getItem(int n) const
+{
+    if (n < 0 || n >= items.size())
+        throw std::out_of_range("GildedRose::getItem");
+
+    return items[n];
 }

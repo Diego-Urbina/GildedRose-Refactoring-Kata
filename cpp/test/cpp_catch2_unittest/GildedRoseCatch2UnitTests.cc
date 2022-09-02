@@ -11,5 +11,5 @@ TEST_CASE("GildedRoseUnitTest", "Foo")
     items.push_back(Item("Foo", 0, 0));
     GildedRose app(items);
     app.updateQuality();
-    REQUIRE("Foo" == app.items[0]->name());
+    REQUIRE("Foo" == app.getItem(0)->name());
 }
